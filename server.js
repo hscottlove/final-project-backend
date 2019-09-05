@@ -1,7 +1,22 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 4000;
 
-app.get('/', (req, res) => res.send('Hello World!'))
+// SECTION ROUTES
+app.get('/', function (req, res) {
+    res.send('Hello World!')
+})
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.post('/', function (req, res) {
+    res.send('Got a POST request')
+})
+
+app.put('/user', function (req, res) {
+    res.send('Got a PUT request at /user')
+})
+
+app.delete('/user', function (req, res) {
+    res.send('Got a DELETE request at /user')
+})
+
+app.listen(PORT, () => console.log(`Server now connected to PORT ${port}!`))
