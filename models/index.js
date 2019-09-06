@@ -10,6 +10,5 @@ mongoose.connect(DB_URL, {
   .catch((err) => console.log(`MongoDB connection error: ${err}`));
 
 module.exports = {
-  User: require('./User'),
-  Post: require('./Post')
+  User: require('./User')
 };
