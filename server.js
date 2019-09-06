@@ -11,10 +11,10 @@ app.use(bodyParser.json());
 
 // SECTION ROUTES
 app.get('/', function (req, res) {
-    res.send('GET request')
+    res.send('<h1>The backend server is working so far...</h1>')
 })
 
-app.post('/', function (req, res) {
+app.post('/api/v1/users/:id', function (req, res) {
     res.send('POST request')
 })
 
@@ -26,4 +26,4 @@ app.delete('/user', function (req, res) {
     res.send('DELETE request')
 })
 
-app.listen(PORT, () => console.log(`Server now connected to PORT ${port}!`))
+app.listen(PORT, () => console.log(`Server now connected to PORT ${PORT}!`))
