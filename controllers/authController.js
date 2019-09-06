@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const validate = require('../validation/register');
 const db = require('../models');
 
-
 // POST Register Route
 const register = (req, res) => {
   const { errors, notValid } = validate(req.body);
@@ -43,7 +42,6 @@ const register = (req, res) => {
   });
 };
 
-
 // POST Login Route
 const login = (req, res) => {
   if (!req.body.email || !req.body.password) {
@@ -72,7 +70,6 @@ const login = (req, res) => {
   });
 };
 
-
 // POST Logout Route
 const logout = (req, res) => {
   req.session.destroy(err => {
@@ -81,13 +78,11 @@ const logout = (req, res) => {
   });
 };
 
-
 // GET Verify User Route
 const verify = (req, res) => {
   if (!req.session.currentUser) return res.status(401).json({ status: 401, message: 'unauthorized' });
   res.status(200).json({ status: 200, message: `Current user verified. User ID = ${req.session.currentUser.id}` });
 }
-
 
 module.exports = {
   register,
