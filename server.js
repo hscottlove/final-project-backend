@@ -11,19 +11,19 @@ app.use(bodyParser.json());
 
 // SECTION ROUTES
 app.get('/', function (req, res) {
-    res.send('Hello World!')
+    res.send('GET request')
 })
 
 app.post('/', function (req, res) {
-    res.send('Got a POST request')
+    res.send('POST request')
 })
 
 app.put('/user', function (req, res) {
-    res.send('Got a PUT request at /user')
+    res.send('PUT request')
 })
 
 app.delete('/user', function (req, res) {
-    res.send('Got a DELETE request at /user')
+    res.send('DELETE request')
 })
 
 app.listen(PORT, () => console.log(`Server now connected to PORT ${port}!`))
