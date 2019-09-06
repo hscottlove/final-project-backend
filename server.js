@@ -5,14 +5,16 @@ const cors = require('cors');
 const app = express()
 const PORT = process.env.PORT || 4000;
 
+const routes = require('./routes');
+
 // SECTION Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // SECTION ROUTES
-app.get('/', function (req, res) {
-    res.send('<h1>The backend server is working so far...</h1>')
-})
+// app.get('/', function (req, res) {
+//     res.send('<h1>The backend server is working so far...</h1>')
+// })
 
 // app.post('/api/v1/users/:id', function (req, res) {
 //     res.send('POST request')
@@ -26,6 +28,6 @@ app.get('/', function (req, res) {
 //     res.send('DELETE request')
 // })
 
-
+// app.use('/api/v1/users', routes.posts);
 
 app.listen(PORT, () => console.log(`Server now connected to PORT ${PORT}!`))
