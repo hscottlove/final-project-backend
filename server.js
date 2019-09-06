@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 4000;
 
 const routes = require('./routes');
 
-// Custom Logger Middleware
+// SECTION Logger Middleware
 app.use((req, res, next) => {
     const url = req.url;
     const method = req.method;
@@ -16,17 +16,17 @@ app.use((req, res, next) => {
     next();
 });
 
-// User Session
+// SECTION User Session
 app.use(session({
-    secret: 'Shhhh, this is a secret...!',
+    secret: 'I will never tell...',
     resave: false,
-    saveUninitialized: false // Only save the session if a property has been added to req.session
+    saveUninitialized: false
   }));
   
   const corsOptions = {
-    origin: ['http://localhost:3000'], // string or array
-    credentials: true, // This allows the session cookie to be sent back and forth
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: ['http://localhost:3000'], 
+    credentials: true, 
+    optionsSuccessStatus: 200
   }
   app.use(cors(corsOptions));
 
@@ -34,14 +34,14 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// SECTION ROUTES
-// Root Route
+// SECTION Root Route
 app.get('/', function (req, res) {
     res.send('<h1>The backend server is working so far...</h1>')
 })
 
-// Auth Routes
+// SECTION Routes
 app.use('/api/v1/auth', routes.auth);
 app.use('/api/v1/users', routes.users);
 
+// SECTION Server Listen
 app.listen(PORT, () => console.log(`Server now connected to PORT ${PORT}!`))
