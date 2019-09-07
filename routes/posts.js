@@ -7,4 +7,7 @@ const db = require('../models');
 // Post Index
 router.get('/', ctrl.index);
 
+// Post Create
+router.post('/', ctrl.create);
+
 
