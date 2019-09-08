@@ -34,7 +34,6 @@ const create = (req, res) => {
 
 // SECTION  Delete Post
 const deletepost = (req, res) => {
-    const newPost = req.body;
 
     db.Post.findByIdAndDelete(req.params._id, (err, deletedPost) => {
         if (err) return res.status(400).json({

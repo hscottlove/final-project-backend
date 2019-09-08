@@ -12,7 +12,7 @@ router.get('/', ctrl.posts.show);
 router.post('/', ctrl.posts.create);
 
 // Post Delete
-// router.delete('/:_id', ctrl.posts.delete);
+router.delete('/:_id', ctrl.posts.deletepost);
 
 module.exports = router;
 
