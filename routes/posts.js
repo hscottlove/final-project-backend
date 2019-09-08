@@ -6,10 +6,10 @@ const authRequired = require('../middleware/authRequired');
 // const db = require('../models');
 
 // Post Index
-// router.get('/', ctrl.index);
+router.get('/', ctrl.posts.show);
 
 // Post Create
-// router.post('/', ctrl.create);
+router.post('/', ctrl.posts.create);
 
 module.exports = router;
 

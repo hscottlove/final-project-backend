@@ -1,7 +1,7 @@
 const db = require('../models');
 
 // Show Post
-const index = (req, res) => {
+const show = (req, res) => {
     db.Post.find({}, (err, allPosts) => {
         if (err) return res.status(400).json({
             status: 400,
@@ -34,6 +34,6 @@ const create = (req, res) => {
 
 
 module.exports = {
-    index,
+    show,
     create,
   };
