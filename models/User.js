@@ -5,7 +5,7 @@ const userSchema = new Schema({
   username: {
     type: String,
   },
-  image: {
+  profileimage: {
     type: String,
   },
   email: {

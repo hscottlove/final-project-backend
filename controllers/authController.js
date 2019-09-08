@@ -28,6 +28,7 @@ const register = (req, res) => {
 
         const newUser = {
           username: req.body.username,
+          profileimage: req.body.profileimage,
           email: req.body.email,
           password: hash,
         }
