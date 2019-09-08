@@ -32,6 +32,23 @@ const create = (req, res) => {
     });
 };
 
+// SECTION Update Post
+const update = (req, res) => {
+    console.log(req.body);
+    db.Post.findByIdAndUpdate(req.params._id, req.body, { new: true }, (err, updatedPost) => {
+        console.log(updatedPost)
+        if(err) return res.status(400).json({
+            status: 400,
+            message: 'Please try again.',
+        });
+
+        res.status(202).json({
+            status: 202,
+            data: updatedPost,
+        });
+    });
+};
+
 // SECTION  Delete Post
 const deletepost = (req, res) => {
     db.Post.findByIdAndDelete(req.params._id, (err, deletedPost) => {
@@ -52,5 +69,6 @@ const deletepost = (req, res) => {
 module.exports = {
     show,
     create,
+    update,
     deletepost,
   };

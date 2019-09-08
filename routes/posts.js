@@ -10,6 +10,9 @@ router.get('/', ctrl.posts.show);
 // SECTION Post Create
 router.post('/', ctrl.posts.create);
 
+// SECTION Update
+router.put('/:_id', ctrl.posts.update)
+
 // SECTION Post Delete
 router.delete('/:_id', ctrl.posts.deletepost);
 
