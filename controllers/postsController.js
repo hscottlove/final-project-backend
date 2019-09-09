@@ -1,8 +1,9 @@
 const db = require('../models');
 
 // SECTION Show Post
+// SHOW SHOULD FIND ONE POST BY ID
 const show = (req, res) => {
-    db.Post.find({}, (err, allPosts) => {
+    db.Post.findById(req.params.id, (err, allPosts) => {
         if (err) return res.status(400).json({
             status: 400,
             message: 'Please try again.',
@@ -11,6 +12,20 @@ const show = (req, res) => {
         res.status(200).json({
             status: 200,
             data: allPosts,
+        });
+    });
+};
+
+const index = (req, res) => {
+    db.Post.find({ user: req.session.currentUser.id }, (err, userPosts) => {
+        if (err) return res.status(400).json({
+            status: 400,
+            message: 'Please try again.',
+        });
+
+        res.status(200).json({
+            status: 200,
+            data: userPosts,
         });
     });
 };
@@ -25,10 +40,20 @@ const create = (req, res) => {
             message: 'Please try again.',
         });
 
-        res.status(201).json({
-            status: 201,
-            data: createdPost,
-        });
+        createdPost.user = req.session.currentUser.id;
+
+        createdPost.save((err, savedPost) => {
+            if (err) return res.status(400).json({
+                status: 400,
+                message: 'Please try again.',
+            });
+
+            res.status(201).json({
+                status: 201,
+                data: savedPost,
+            });
+        })
+
     });
 };
 
@@ -67,6 +92,7 @@ const deletepost = (req, res) => {
 
 
 module.exports = {
+    index,
     show,
     create,
     update,
