@@ -17,6 +17,7 @@ const show = (req, res) => {
 };
 
 const index = (req, res) => {
+    console.log(req.session)
     db.Post.find({ user: req.session.currentUser.id }, (err, userPosts) => {
         if (err) return res.status(400).json({
             status: 400,
